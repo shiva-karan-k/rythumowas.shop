@@ -1,6 +1,5 @@
 {
-  "buildCommand": "cd .. && pnpm install && cd farmer-portal && pnpm build",
-  "installCommand": "pnpm install --filter farmer-portal --filter @rythumowa/ui",
-  "framework": "nextjs",
-  "outputDirectory": ".next"
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs"
 }
