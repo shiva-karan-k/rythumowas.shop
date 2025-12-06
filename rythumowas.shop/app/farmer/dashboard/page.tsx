@@ -1,23 +1,4 @@
-'use client'
-
-import { useUser } from '@clerk/nextjs'
-import { useRouter } from 'next/navigation'
-import { useEffect } from 'react'
-
 export default function FarmerDashboard() {
-  const { user, isLoaded } = useUser()
-  const router = useRouter()
-
-  useEffect(() => {
-    if (isLoaded && !user) {
-      router.push('/')
-    }
-  }, [isLoaded, user, router])
-
-  if (!isLoaded || !user) {
-    return <div className="min-h-screen flex items-center justify-center">Loading...</div>
-  }
-
   return (
     <div className="min-h-screen bg-gray-50 py-8">
       <div className="container mx-auto px-4">
