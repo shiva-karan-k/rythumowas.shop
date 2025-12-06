@@ -2,7 +2,6 @@
 
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
-import { UserButton } from '@clerk/nextjs'
 
 export default function AdminNav() {
   const pathname = usePathname()
@@ -44,7 +43,6 @@ export default function AdminNav() {
 
       <div className="mt-auto pt-8 border-t border-gray-200">
         <div className="flex items-center gap-3">
-          <UserButton afterSignOutUrl="/" />
           <span className="text-sm text-gray-600">Admin</span>
         </div>
       </div>
