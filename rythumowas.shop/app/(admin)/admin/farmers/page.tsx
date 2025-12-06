@@ -1,6 +1,9 @@
 import { prisma } from '@/lib/prisma'
 import { Card, CardHeader, CardTitle, CardContent, Badge } from '@rythumowa/ui'
 
+export const dynamic = 'force-dynamic'
+export const revalidate = 0
+
 export const metadata = {
   title: 'Farmer Management',
   description: 'Manage farmer approvals and verification'
