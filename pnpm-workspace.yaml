@@ -1,0 +1,5 @@
+packages:
+  - 'rythumowas.shop'
+  - 'farmer-portal'
+  - 'medusa-backend'
+  - 'packages/*'
