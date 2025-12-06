@@ -1,0 +1,102 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Core identity - maps to Clerk users
+model User {
+  id            String    @id @default(cuid())
+  clerkId       String    @unique // Clerk user ID
+  email         String    @unique
+  name          String?
+  role          Role      @default(CUSTOMER)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  
+  // Optional: link to OGBG Supabase user
+  ogbgUserId    String?   @unique
+  
+  farmer        Farmer?
+  orders        Order[]
+}
+
+enum Role {
+  ADMIN
+  FARMER
+  CUSTOMER
+}
+
+model Farmer {
+  id            String    @id @default(cuid())
+  userId        String    @unique
+  user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  
+  farmName      String
+  location      String
+  district      String
+  phone         String
+  description   String?
+  verified      Boolean   @default(false)
+  
+  products      Product[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Product {
+  id            String    @id @default(cuid())
+  name          String
+  description   String
+  price         Float
+  image         String
+  category      String
+  inStock       Boolean   @default(true)
+  quantity      Int       @default(0)
+  
+  farmerId      String
+  farmer        Farmer    @relation(fields: [farmerId], references: [id], onDelete: Cascade)
+  
+  orderItems    OrderItem[]
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Order {
+  id            String      @id @default(cuid())
+  userId        String
+  user          User        @relation(fields: [userId], references: [id])
+  
+  total         Float
+  status        OrderStatus @default(PENDING)
+  
+  shippingAddress String
+  phone         String
+  
+  items         OrderItem[]
+  createdAt     DateTime    @default(now())
+  updatedAt     DateTime    @updatedAt
+}
+
+enum OrderStatus {
+  PENDING
+  CONFIRMED
+  SHIPPED
+  DELIVERED
+  CANCELLED
+}
+
+model OrderItem {
+  id            String   @id @default(cuid())
+  orderId       String
+  order         Order    @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  
+  productId     String
+  product       Product  @relation(fields: [productId], references: [id])
+  
+  quantity      Int
+  price         Float
+}
