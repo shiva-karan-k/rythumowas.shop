@@ -8,44 +8,25 @@
 
 ## 🚀 Next Steps
 
-### 1. Setup Clerk Webhook (Required for user sync)
+### 1. Setup Stack Auth (Required)
 
-Your Clerk webhook endpoint is: `http://localhost:3000/api/webhooks/clerk`
+Stack Auth is already configured. Make sure your `.env` file has:
 
-For local development, use **Clerk's webhook testing** or **ngrok**:
-
-#### Option A: Using ngrok (Recommended for local dev)
-
-```bash
-# Install ngrok
-winget install ngrok
-
-# Start ngrok tunnel
-ngrok http 3000
-
-# Copy the https URL (e.g., https://abc123.ngrok.io)
+```env
+NEXT_PUBLIC_STACK_PROJECT_ID=your_project_id
+NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY=your_publishable_key
+STACK_SECRET_SERVER_KEY=your_secret_key
 ```
 
-Then in Clerk Dashboard:
-1. Go to https://dashboard.clerk.com
-2. Navigate to **Webhooks** in sidebar
-3. Click **Add Endpoint**
-4. Enter: `https://YOUR-NGROK-URL.ngrok.io/api/webhooks/clerk`
-5. Subscribe to events:
-   - `user.created`
-   - `user.updated`
-   - `user.deleted`
-6. Copy the **Signing Secret**
-7. Add to `.env`:
-   ```
-   CLERK_WEBHOOK_SECRET=whsec_...
-   ```
+Get these keys from: https://stack-auth.com → Your Project → API Keys
 
-#### Option B: Skip for now (manual testing)
+See `STACK_AUTH_SETUP.md` for detailed instructions.
 
-You can test without webhooks by:
-1. Sign in with Clerk
-2. Manually create user in database using Prisma Studio:
+### 2. Test Authentication
+
+You can test authentication by:
+1. Sign in with Stack Auth
+2. View user in database using Prisma Studio:
    ```bash
    pnpm prisma studio
    ```

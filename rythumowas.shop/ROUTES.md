@@ -47,8 +47,8 @@ Professional, database-driven storefront for business buyers.
 - `/shop` - Consumer Storefront (Bolt design)
 - `/cart` - Shopping cart
 - `/products/[id]` - Product detail page
-- `/sign-in` - Clerk authentication
-- `/sign-up` - Clerk registration
+- `/handler/sign-in` - Stack Auth authentication
+- `/handler/sign-up` - Stack Auth registration
 
 ### Farmer Routes (Protected)
 - `/farmer/register` - Farmer registration form
@@ -62,7 +62,7 @@ Professional, database-driven storefront for business buyers.
 - `/admin/orders` - Order management (TODO)
 
 ### API Routes
-- `/api/webhooks/clerk` - Clerk user sync
+- `/api/webhooks/stack` - Stack Auth user sync (if configured)
 - `/api/auth/register` - User registration
 - `/api/farmer/profile` - Farmer profile CRUD
 - `/api/products/[id]` - Get product details

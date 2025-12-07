@@ -13,11 +13,11 @@
 - [x] Next.js 15.1.3 with Turbopack
 - [x] Neon PostgreSQL database connected
 - [x] Prisma ORM configured and synced
-- [x] Clerk authentication integrated
+- [x] Stack Auth authentication integrated
 - [x] Middleware configured correctly
 
 ### ✅ Database Schema
-- [x] User table (with Clerk ID mapping)
+- [x] User table (with Stack Auth ID mapping)
 - [x] Farmer table (with verification)
 - [x] Product table
 - [x] Order & OrderItem tables
@@ -31,13 +31,13 @@
 - [x] Admin structure (`/admin`)
 
 ### ✅ Authentication
-- [x] Clerk sign-in/sign-up
+- [x] Stack Auth sign-in/sign-up
 - [x] Protected routes
 - [x] User button in header
 - [x] Role-based access (ADMIN, FARMER, CUSTOMER)
 
 ### ✅ API Routes
-- [x] Clerk webhook (`/api/webhooks/clerk`)
+- [x] Stack Auth configured (see STACK_AUTH_SETUP.md)
 - [x] Farmer profile API (`/api/farmer/profile`)
 - [x] Auth registration API (`/api/auth/register`)
 
@@ -55,7 +55,7 @@ You'll see:
 - Sign In button (top right)
 
 ### 2. Sign In
-Click "Sign In" → Create a test account with Clerk
+Click "Sign In" → Create a test account with Stack Auth
 
 ### 3. Register as Farmer
 After signing in:
@@ -76,14 +76,13 @@ Opens at http://localhost:5555
 
 ---
 
-## ⚠️ Setup Webhook (Optional for MVP)
+## ⚠️ Setup Stack Auth (Required)
 
-For production, you need to configure Clerk webhook:
+For production, you need to configure Stack Auth:
 
-1. Install ngrok: `winget install ngrok`
-2. Run: `ngrok http 3000`
-3. Copy the https URL
-4. In Clerk Dashboard → Webhooks:
+1. Go to https://stack-auth.com and create a project
+2. Copy your API keys to `.env` file
+3. See STACK_AUTH_SETUP.md for detailed instructions
    - Add endpoint: `https://YOUR-URL.ngrok.io/api/webhooks/clerk`
    - Subscribe to: `user.created`, `user.updated`, `user.deleted`
    - Copy signing secret

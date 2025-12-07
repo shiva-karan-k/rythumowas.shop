@@ -7,7 +7,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// Core identity - maps to Clerk users
+// Core identity - maps to Stack Auth users
 model User {
   id            String    @id @default(cuid())
   stackId       String    @unique // Stack user ID

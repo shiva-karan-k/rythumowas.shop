@@ -1,11 +1,9 @@
 'use client'
 
-import { useUser } from '@clerk/nextjs'
 import Link from 'next/link'
 import { Package, ShoppingCart, DollarSign, TrendingUp } from 'lucide-react'
 
 export default function DashboardPage() {
-  const { user } = useUser()
 
   const stats = [
     { label: 'Total Products', value: '0', icon: Package, color: 'bg-blue-500' },
@@ -30,7 +28,7 @@ export default function DashboardPage() {
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h2 className="text-xl font-semibold text-gray-900">
-            Welcome back, {user?.firstName || 'Farmer'}! 👋
+            Welcome back, Farmer! 👋
           </h2>
           <p className="text-gray-600 mt-1">Here's what's happening with your farm today</p>
         </div>
