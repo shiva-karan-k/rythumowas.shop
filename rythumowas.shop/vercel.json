@@ -1,0 +1,5 @@
+﻿{
+  "buildCommand": "cd ../.. && pnpm install --frozen-lockfile && cd rythumowas.shop && pnpm build",
+  "installCommand": "cd ../.. && pnpm install --frozen-lockfile",
+  "outputDirectory": ".next"
+}
