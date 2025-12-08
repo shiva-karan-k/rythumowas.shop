@@ -34,15 +34,15 @@ Copy `.env.example` to `.env` in each project:
 **rythumowas.shop/.env**
 ```env
 DATABASE_URL="postgresql://..."
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_..."
-CLERK_SECRET_KEY="sk_..."
+NEXT_PUBLIC_STACK_PROJECT_ID="your_project_id"
+NEXT_PUBLIC_STACK_PUBLISHABLE_CLIENT_KEY="your_publishable_key"
+STACK_SECRET_SERVER_KEY="your_secret_key"
 NEXT_PUBLIC_MEDUSA_URL="http://localhost:9000"
 ```
 
 **farmer-portal/.env**
 ```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_..."
-CLERK_SECRET_KEY="sk_..."
+NEXT_PUBLIC_MAIN_APP_URL="http://localhost:3000"
 NEXT_PUBLIC_API_URL="http://localhost:9000"
 ```
 
@@ -68,13 +68,13 @@ cd farmer-portal
 pnpm dev
 ```
 
-## Clerk Setup
+## Stack Auth Setup
 
-1. Create account at clerk.com
-2. Create application
-3. Enable email/password authentication
-4. Copy API keys to .env files
-5. Configure webhooks for user sync
+1. Create account at https://stack-auth.com
+2. Create a new project
+3. Copy API keys from the dashboard
+4. Add keys to `.env` file in `rythumowas.shop`
+5. See `rythumowas.shop/STACK_AUTH_SETUP.md` for detailed instructions
 
 ## Troubleshooting
 

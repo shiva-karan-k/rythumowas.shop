@@ -1,0 +1,16 @@
+{
+  "store": {
+    "currencies": ["usd", "inr"],
+    "default_currency_code": "inr"
+  },
+  "regions": [
+    {
+      "name": "India",
+      "currency_code": "inr",
+      "tax_rate": 0,
+      "payment_providers": ["manual"],
+      "fulfillment_providers": ["manual"],
+      "countries": ["in"]
+    }
+  ]
+}

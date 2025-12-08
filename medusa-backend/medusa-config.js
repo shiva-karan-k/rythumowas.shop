@@ -28,22 +28,29 @@ const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 const plugins = [
   `medusa-fulfillment-manual`,
-  `medusa-payment-manual`,
+  {
+    resolve: `medusa-payment-manual`,
+    options: {
+      // Manual payment provider configuration
+    },
+  },
   {
     resolve: `@medusajs/file-local`,
     options: {
       upload_dir: "uploads",
     },
   },
-  {
-    resolve: "@medusajs/admin",
-    options: {
-      autoRebuild: true,
-      develop: {
-        open: process.env.OPEN_BROWSER !== "false",
-      },
-    },
-  },
+  // Admin panel disabled due to React version conflicts
+  // Use Medusa API directly or upgrade to Medusa v2
+  // {
+  //   resolve: "@medusajs/admin",
+  //   options: {
+  //     autoRebuild: true,
+  //     develop: {
+  //       open: process.env.OPEN_BROWSER !== "false",
+  //     },
+  //   },
+  // },
 ];
 
 const modules = {
