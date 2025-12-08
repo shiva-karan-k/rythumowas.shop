@@ -1,9 +1,9 @@
 {
   "version": 2,
   "builds": [
-    { "src": "rythumowas.shop/next.config.ts", "use": "@vercel/next" }
+    { "src": "next.config.ts", "use": "@vercel/next" }
   ],
-  "installCommand": "cd rythumowas.shop && pnpm install --frozen-lockfile",
-  "buildCommand": "cd rythumowas.shop && pnpm run build"
+  "installCommand": "pnpm install --frozen-lockfile",
+  "buildCommand": "pnpm run build"
 }
 
