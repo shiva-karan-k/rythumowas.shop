@@ -1,11 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "next.config.ts", "use": "@vercel/next" }
-  ],
-  "routes": [
-    { "handle": "filesystem" }
-  ],
+  "builds": [{ "src": "next.config.ts", "use": "@vercel/next" }],
   "installCommand": "pnpm install --frozen-lockfile",
   "buildCommand": "pnpm run build"
 }
